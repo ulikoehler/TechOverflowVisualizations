@@ -1,0 +1,37 @@
+% tikzpic.tex
+\documentclass[tikz, border=1mm]{standalone}
+\usepackage[europeanresistors,americaninductors,americancurrents,siunitx]{circuitikz}
+\usepackage{siunitx}
+\begin{document}
+
+%%% Coordinate definitions: %%%
+% Position of the bridge (top upper corner)
+\def\x{6}
+\def\y{6}
+% Size of the bridge
+\def\dx{3}
+\def\dy{3}
+
+\begin{circuitikz}[american voltages]
+  % Voltage source
+  \draw (0,0) to [V, l_=5<\volt>] (0, \y) to (\x, \y);
+  % Left half bridge
+  \draw[dashed] (\x, \y) to [R, l=R1, *-*] (\x-\dx,\y-\dy); % Top left resistor
+  \draw (\x-\dx,\y-\dy) to [R, l=R3, -*] (\x,\y-2*\dy);  % Bottom left resistor
+  % Right half bridge
+  \draw (\x,\y) to [R, l=R2, -*] (\x+\dx, \y-\dy); % Top right resistor
+  \draw[dashed] (\x+\dx, \y-\dy) to [R, l=R4, -*] (\x,\y-2*\dy);  % Bottom right resistor
+  % Draw connection to (-) terminal of voltage source
+  \draw (\x,\y-2*\dy) to (\x, 0) to (0,0);
+
+  % Draw voltmeter
+  \draw (\x-\dx, \y-\dy) to [voltmeter] (\x+\dx, \y-\dy);
+
+  % Draw burnout current sources
+  \draw (\x-\dx, \y) to [I, i_=I1, -*] (\x-\dx, \y-\dy); % IN(+)
+  \draw (\x+\dx, \y-\dy) to [I, i=I2] (\x+\dx, \y-2*\dy)
+  to (\x,\y-2*\dy); % IN(-)
+
+\end{circuitikz}
+
+\end{document}
