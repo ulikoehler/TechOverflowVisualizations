@@ -1,10 +1,11 @@
 % Simple CMOS (N-MOSFET & P-MOSFET) H bridge.
 % Author: Uli Koehler (https://techoverflow.net)
 % Based on http://texample.net/tikz/examples/power-electronics-converter-inverter/
+%   by Ali Mehrizi-Sani
 %
-% NOTE: Requires recent CircuiTikZ version in order to use elmech and fetbodydiodes!
+% NOTE: Requires recent CircuiTikZ version in order to use [T]elmech and fetbodydiode!
 % TeXLive 2015 is too old, please use at least TeXLive 2016!
-% 
+
 \documentclass[tikz, border=1mm]{standalone}
 \usepackage{siunitx}
 \usepackage[european,cuteinductors,fetbodydiode]{circuitikz}
@@ -12,8 +13,6 @@
 \usetikzlibrary{calc}
 \ctikzset{bipoles/thickness=1}
 \ctikzset{bipoles/length=0.8cm}
-\ctikzset{bipoles/vsourceam/height/.initial=.7}
-\ctikzset{bipoles/vsourceam/width/.initial=.7}
 \tikzstyle{every node}=[font=\small]
 \tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
 
