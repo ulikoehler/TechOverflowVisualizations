@@ -8,7 +8,7 @@
 
 \documentclass[tikz, border=1mm]{standalone}
 \usepackage{siunitx}
-\usepackage[european,cuteinductors,fetbodydiode]{circuitikz}
+\usepackage[european,cuteinductors]{circuitikz}
 
 \usetikzlibrary{calc}
 \ctikzset{bipoles/thickness=1}
@@ -36,17 +36,13 @@
     (NE)++(3,0)
     ++(0,-1) node [pigfete,scale=0.8,yscale=-1,name=fet3] {}
     ++(0,-2) node [nigfete,scale=0.8,name=fet2] {}
-    %(fet3.D)++(0,0.1) -- ++(0.3,0) to[D*] ($(fet3.S)+(0.3,-0.1)$)
-    %  -- ++(-0.3,0)
-    %(fet2.S)++(0,0.1) -- ++(0.3,0) to[D*] ($(fet2.D)+(0.3,-0.1)$)
-    %  -- ++(-0.3,0)
     % --Switch connections for leg b
     (Vcc) -| (fet3.S)
     (fet3.D) -- (fet2.D)
     (fet2.S) |- (0,0)
 
     % Motor (between the legs)
-    (2,2) to[short,*-,current/distance=0.9,Telmech=M] ++(3,0)
+    (2,2) to[short,*-*,current/distance=0.9,L] ++(3,0)
     ;
 \end{tikzpicture}
 \end{document}

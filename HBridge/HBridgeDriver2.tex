@@ -21,9 +21,15 @@
     % Define named coordinates
     \draw (0,0)++(0,4) coordinate (Vcc)
     ++(2,0) coordinate (NE)
-    ++(0,-4) coordinate (SE)
+    ++(0,-4) coordinate (SE);
 
-    % 
+    % VCC connection
+    \draw[lightgray] (NE)++(1.5,0) to[short,*-,color=lightgray]
+    ++(0,0.25) node[color=lightgray,vcc]{24V}
+
+    % GND connection
+    (SE)++(1.5,0) to[short,*-,color=lightgray]
+    ++(0,-0.25) node[color=lightgray,ground]{}
 
     % Switches and diodes for left leg
     (NE)++(0,-1) node [color=black,pigfete,scale=0.8,yscale=-1,name=fet1] {}
