@@ -8,11 +8,11 @@
 
 \documentclass[tikz, border=1mm]{standalone}
 \usepackage{siunitx}
-\usepackage[european,cuteinductors]{circuitikz}
+\usepackage[european,cuteinductors,americanresistors]{circuitikz}
 
 \usetikzlibrary{calc}
 \ctikzset{bipoles/thickness=1}
-\ctikzset{bipoles/length=0.8cm}
+\ctikzset{bipoles/length=0.5cm}
 \tikzstyle{every node}=[font=\small]
 \tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
 
@@ -51,5 +51,13 @@
     % Motor (between the legs)
     \draw[draw=lightgray,lightgray] (2,2) to[short,*-*,color=lightgray,current/distance=0.9] ++(3,0)
     ;
+
+    % Top PFET drive
+    \draw (fet1.G) to (fet1.G -| 0,0)
+    (fet1.G -| 0,0) to[R] (Vcc) to[-*] (NE)
+    (0,1.8) node[ground,scale=2.]{} to[Tnpn=Q5,name=Q5] (fet1.G -| 0,0)
+    (Q5.B)++(0.25,0) to[R] ++(-1,0);
+    
+
 \end{tikzpicture}
 \end{document}
