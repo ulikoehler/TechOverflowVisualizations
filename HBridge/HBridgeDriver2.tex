@@ -59,9 +59,10 @@
     (Q5.B) to[R] ++(-2,0) coordinate (HCTRL);
 
     % Control driver
-    \draw (HCTRL) to[sqV] (HCTRL |- fet4.G) to (fet4.G);
-    
+    \draw (HCTRL) to[sqV] (HCTRL |- fet4.G)node[ground]{} ;
+    %(HCTRL |- fet4.G) to (fet4.G);
 
+    \draw (fet4.G)++(-1,-1) node[ground]{} coordinate (lctrlSrc) to[sqV] (lctrlSrc |- fet4.G) to (fet4.G);
 
 \end{tikzpicture}
 \end{document}
