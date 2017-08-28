@@ -12,7 +12,7 @@
 
 \usetikzlibrary{calc}
 \ctikzset{bipoles/thickness=1}
-\ctikzset{bipoles/length=0.5cm}
+\ctikzset{bipoles/length=0.7cm}
 \tikzstyle{every node}=[font=\small]
 \tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
 
@@ -32,8 +32,8 @@
     ++(0,-0.25) node[color=lightgray,ground]{}
 
     % Switches and diodes for left leg
-    (NE)++(0,-1) node [color=black,pigfete,scale=0.8,yscale=-1,name=fet1] {}
-    ++(0,-2) node [color=black,nigfete,scale=0.8,name=fet4] {};
+    (NE)++(0,-1) node [color=black,pigfete,scale=1.5,yscale=-1,name=fet1] {}
+    ++(0,-2) node [color=black,nigfete,scale=1.5,name=fet4] {};
 
     \draw [black] (NE) -| (fet1.S)
     (fet1.D) to (fet4.D)
@@ -41,23 +41,27 @@
 
     % Switches and diodes for leg b
     \draw (NE)++(3,0)
-    ++(0,-1) node [color=lightgray,pigfete,scale=0.8,yscale=-1,name=fet3] {}
-    ++(0,-2) node [color=lightgray,nigfete,scale=0.8,name=fet2] {};
+    ++(0,-1) node [color=lightgray,pigfete,scale=1.5,yscale=-1,name=fet3] {}
+    ++(0,-2) node [color=lightgray,nigfete,scale=1.5,name=fet2] {};
     % --Switch connections for leg b
     \draw[lightgray](NE) -| (fet3.S)
     (fet3.D) -- (fet2.D)
     (fet2.S) |- (SE);
 
     % Motor (between the legs)
-    \draw[draw=lightgray,lightgray] (2,2) to[short,*-*,color=lightgray,current/distance=0.9] ++(3,0)
+    \draw[draw=lightgray,lightgray] (2,2) to[L,short,*-*,color=lightgray,current/distance=0.9] ++(3,0)
     ;
 
     % Top PFET drive
-    \draw (fet1.G) to (fet1.G -| 0,0)
-    (fet1.G -| 0,0) to[R] (Vcc) to[-*] (NE)
-    (0,1.8) node[ground,scale=2.]{} to[Tnpn=Q5,name=Q5] (fet1.G -| 0,0)
-    (Q5.B)++(0.25,0) to[R] ++(-1,0);
+    \draw (fet1.G) to[*-*] (fet1.G -| 0,0)
+    (fet1.G -| 0,0) to[R,*-] (Vcc) to[-*] (NE)
+    (0,1.8) node[ground]{} to[Tnpn,name=Q5] (fet1.G -| 0,0)
+    (Q5.B) to[R] ++(-2,0) coordinate (HCTRL);
+
+    % Control driver
+    \draw (HCTRL) to[sqV] (HCTRL |- fet4.G) to (fet4.G);
     
+
 
 \end{tikzpicture}
 \end{document}
