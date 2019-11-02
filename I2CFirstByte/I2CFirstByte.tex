@@ -10,8 +10,7 @@
 
 \begin{document}
 \begin{tikzpicture}
-\node (A7) [draw, minimum height=7mm, minimum width=10mm] {A7};
-\node (A6) [draw, minimum height=7mm, minimum width=10mm, right=0cm of A7] {A6};
+\node (A6) [draw, minimum height=7mm, minimum width=10mm] {A6};
 \node (A5) [draw, minimum height=7mm, minimum width=10mm, right=0cm of A6] {A5};
 \node (A4) [draw, minimum height=7mm, minimum width=10mm, right=0cm of A5] {A4};
 \node (A3) [draw, minimum height=7mm, minimum width=10mm, right=0cm of A4] {A3};
@@ -20,7 +19,7 @@
 \node (A0) [draw, minimum height=7mm, minimum width=10mm, right=0cm of A1] {A0};
 \node (RW) [draw, minimum height=7mm, minimum width=10mm, right=0cm of A0] {R/\textoverline{W}};
 
-\coordinate[above left=0mm of A7] (AddrLeft);
+\coordinate[above left=0mm of A6] (AddrLeft);
 \coordinate[above right=0mm of A0] (AddrRight);
 
 \coordinate[below left=0mm of RW] (RWLeft);
